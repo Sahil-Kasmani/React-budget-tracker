@@ -103,7 +103,7 @@ const Authentication: React.FC = () => {
 
                         <label htmlFor="terms" id="terms-label"><input onChange={handleChange} type="checkbox" id="terms" name="CheckBox" className="inline" required />I agree to the Terms and Privacy Policy</label>{validationError.CheckBox && <li className="valiError">{validationError.CheckBox}</li>}
 
-                        <button type="submit">Get started</button>
+                        <button type="submit" className="AuthBtn">Get started</button>
                     </form>
                     <p>Already a member? <Link to="/login">Log in</Link></p>
                 </fieldset>

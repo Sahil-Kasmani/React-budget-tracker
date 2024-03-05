@@ -69,7 +69,7 @@ fieldset {
   box-shadow: none;
 }
 
-button {
+.AuthBtn {
   width: 100%;
   color: white;
   background-color: #48488a;
@@ -80,7 +80,7 @@ button {
   margin-top: 0.5rem;
 }
 
-button:hover {
+.AuthBtn:hover {
   background-color: rgb(63, 125, 176);
   box-shadow: 0 0 10px rgb(13, 103, 231);
   border: none;
