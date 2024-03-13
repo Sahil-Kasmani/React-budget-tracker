@@ -41,12 +41,12 @@ const Authentication: React.FC = () => {
             errors.name = "Name must be contain 2 or more alphabetical characters";
         } else if (email === "") {
             errors.email = "Email field is required";
+        } else if (!/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(String(email))) {
+            errors.email = ("Please enter a valid email address");
         } else if (uName === "") {
             errors.uName = "User Name Field is required";
         } else if (!/^[a-zA-Z\d]+$/.test(String(uName))) {
             errors.uName = "userName can only contains characters and numbers";
-        } else if (!/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(String(email))) {
-            errors.email = ("Please enter a valid email address");
         } else if (pass === "") {
             errors.pass = "Password Field is required";
         } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/.test(String(pass))) {
@@ -68,7 +68,10 @@ const Authentication: React.FC = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, type } = e.target;
-        const value = type === "checkbox" ? e.target.checked : e.target.value;
+        let value: string | boolean = type === "checkbox" ? e.target.checked : e.target.value;
+        if (typeof value === 'string') {
+            value = value.trim();
+        }
         setInpvalue(() => {
             return {
                 ...inpvalue,

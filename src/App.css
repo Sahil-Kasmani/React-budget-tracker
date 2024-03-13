@@ -5,6 +5,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -13,16 +14,16 @@ body {
 
 }
 
-fieldset h1,
-p {
+fieldset h1 {
   text-align: center;
 }
 
 fieldset p {
   padding-top: 1rem;
+  text-align: center;
 }
 
-form {
+#authentication {
   margin-top: 2rem;
 }
 
@@ -31,7 +32,9 @@ label {
   padding: 1.5vh 0;
 }
 
-input {
+input,
+select,
+textarea {
   width: 100%;
   min-height: 4.5vh;
   margin: 0.8vh 0;
@@ -41,7 +44,7 @@ input {
 }
 
 input[type=password]::placeholder {
-  transform: translate3d(0, 4px, 0);
+  transform: translate3d(0, 2px, 0);
 }
 
 input:focus {
@@ -69,7 +72,8 @@ fieldset {
   box-shadow: none;
 }
 
-.AuthBtn {
+.AuthBtn,
+.DetaBtn {
   width: 100%;
   color: white;
   background-color: #48488a;
@@ -83,6 +87,12 @@ fieldset {
 .AuthBtn:hover {
   background-color: rgb(63, 125, 176);
   box-shadow: 0 0 10px rgb(13, 103, 231);
+  border: none;
+}
+
+.DetaBtn:hover {
+  background-color: rgb(203, 86, 73);
+  box-shadow: 0 0 10px rgb(217, 59, 31);
   border: none;
 }
 
@@ -147,6 +157,102 @@ a:hover {
   margin: auto;
 }
 
+.menu {
+  font-size: 2rem;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  display: block;
+  width: 100%;
+}
+
+.nav {
+  height: 100%;
+  width: 150px;
+  position: absolute;
+  background-color: #b8b3b3d6;
+  /* z-index: 1; */
+  transition: 0.5s ease;
+  left: 0;
+  top: 0;
+}
+
+ul {
+  width: 100%;
+  list-style: none;
+}
+
+ul li {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+ul li a {
+  color: black;
+  padding: 8px 15px;
+  display: block;
+  font-size: 20px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+ul li:hover a {
+  background-color: #225b35;
+  color: white;
+  letter-spacing: 3px;
+}
+
+.mainDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+}
+
+.budDetail {
+  display: flex;
+  width: 50%;
+  background: #b8b3b3d6;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  overflow: hidden;
+  padding: 0.6rem;
+  border-radius: 20px;
+  margin: 0.5em;
+}
+
+.budDetail2 {
+  width: 45%;
+  text-align: end;
+  /* background-color: antiquewhite; */
+}
+
+.trans {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  margin: 0.6em 1em;
+  box-shadow: inset -1px -2px 4px 0px #a29292;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.trans:hover {
+  /* background-color: #00b894; */
+  box-shadow: 0 0 8px #a29292;
+  transform: scale(1.01);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5em;
+  margin: 0.8em;
+
+}
+
 @media screen and (max-width: 900px) {
 
   .con1,
@@ -163,5 +269,15 @@ a:hover {
 
   .login {
     width: fit-content;
+  }
+
+  .budDetail,
+  .budDetail2 {
+    width: 100%;
+  }
+
+  .mainDetails {
+    display: block;
+    margin-top: 3rem;
   }
 }

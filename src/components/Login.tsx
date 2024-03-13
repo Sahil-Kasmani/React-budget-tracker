@@ -20,7 +20,9 @@ const Login: React.FC = () => {
                 </>
                 : !email || !pass
                     ? alert("Please fill up the fields")
-                    : alert("Email or Password are invalid");
+                    : !user.email && !user.pass
+                        ? alert("Currently No user Exist")
+                        : alert("Email or Password are invalid");
         }
 
     }
