@@ -19,8 +19,13 @@ const Dashboard: React.FC = () => {
     const [opened, { toggle }] = useDisclosure();
 
     // user details 
-    let exist = localStorage.getItem('john');
+    let exist = localStorage.getItem(userName.name);
     let user_deta = exist ? JSON.parse(exist) : null;
+
+    // logic for the credit and debit balance 
+    const totalCredit = user_deta.filter((item: any) => item.cate === "credit").reduce((prev: number, value: any) => prev + parseFloat(value.amount), 0)
+    const totalDebit = user_deta.filter((item: any) => item.cate === "debit").reduce((prev: number, value: any) => prev + parseFloat(value.amount), 0)
+
 
     return (
         <>
@@ -37,10 +42,10 @@ const Dashboard: React.FC = () => {
                                     justify="space-between"
                                     align="center"
                                     direction="row"
-                                    wrap="nowrap"
+                                    wrap="wrap"
                                 >
                                     <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                                    <Title c='#225b35'>{<IconWallet size={30} style={{ marginRight: "10px" }} />}Budget Tracker</Title>
+                                    <Title c='#225b35' size={30}>{<IconWallet size={25} style={{ marginRight: "10px" }} />}Budget Tracker</Title>
                                     <Button size='sm' leftSection={<IconLogout size={14} />} onClick={handleLogout} color='red' radius="lg">Logout</Button>
                                 </Flex>
                             </AppShell.Header>
@@ -53,9 +58,9 @@ const Dashboard: React.FC = () => {
                                 {/* <div>Welcome - {userName.name}</div> */}
                                 <div className='mainDetails'>
                                     <div className="budDetail">
-                                        <h3>Total Income<p>₹.20000</p></h3>
-                                        <h3>Total Expenses<p>₹.20000</p></h3>
-                                        <h3>Remaining Budget<p>₹.30000</p></h3>
+                                        <h3>Total Income<p>+₹.{totalCredit}</p></h3>
+                                        <h3>Total Expenses<p>-₹.{totalDebit}</p></h3>
+                                        <h3>Remaining Budget<p>{totalCredit > totalDebit ? "+" : "-"}₹.{totalCredit - totalDebit}</p></h3>
                                     </div>
                                     <div className="budDetail2">
                                         <Transaction user_deta={user_deta} />

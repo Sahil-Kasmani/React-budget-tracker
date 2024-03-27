@@ -225,7 +225,6 @@ ul li:hover a {
 
 .budDetail2 {
   width: 45%;
-  text-align: end;
   /* background-color: antiquewhite; */
 }
 
@@ -237,6 +236,7 @@ ul li:hover a {
   box-shadow: inset -1px -2px 4px 0px #a29292;
   border-radius: 10px;
   transition: 0.3s ease;
+  align-items: center;
 }
 
 .trans:hover {
@@ -249,7 +249,7 @@ ul li:hover a {
   display: flex;
   justify-content: space-between;
   padding: 0 0.5em;
-  margin: 0.8em;
+  margin: 0 0.8em;
 
 }
 
