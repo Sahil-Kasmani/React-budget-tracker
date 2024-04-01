@@ -168,7 +168,7 @@ a:hover {
 
 .nav {
   height: 100%;
-  width: 150px;
+  width: 200px;
   position: absolute;
   background-color: #b8b3b3d6;
   /* z-index: 1; */
@@ -190,8 +190,11 @@ ul li {
 
 ul li a {
   color: black;
-  padding: 8px 15px;
-  display: block;
+  padding: 8px 26px;
+  /* display: block; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 20px;
   letter-spacing: 1px;
   transition: 0.3s;
@@ -201,7 +204,7 @@ ul li a {
 ul li:hover a {
   background-color: #225b35;
   color: white;
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
 }
 
 .mainDetails {
@@ -250,7 +253,17 @@ ul li:hover a {
   justify-content: space-between;
   padding: 0 0.5em;
   margin: 0 0.8em;
+  align-items: baseline;
 
+}
+
+.explore {
+  color: #48488a;
+}
+
+.explore:hover {
+  color: rgb(97, 117, 228);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {

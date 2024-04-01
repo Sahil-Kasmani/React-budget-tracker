@@ -123,7 +123,9 @@ const Transaction = ({ user_deta }: data_prop) => {
             <div>
                 <div className='flex'>
                     <h2>Transactions</h2>
-                    <ActionIcon variant='outline' color='black' onClick={handleFilterOpen}><IconFilterEdit /></ActionIcon>
+                    {/* <ActionIcon variant='outline' color='black' onClick={handleFilterOpen}><IconFilterEdit /></ActionIcon> */}
+                    <p className='explore' onClick={handleFilterOpen}><small>Explore all</small></p>
+
                     <Modal
                         opened={firstModalOpen}
                         onClose={() => setFirstModalOpen(false)}
@@ -163,7 +165,7 @@ const Transaction = ({ user_deta }: data_prop) => {
                     (<p className='flex' style={{ color: "#da453c" }}>No data available In selected filter Range</p>) :
                     !filteredData ? <p className='flex' style={{ color: "#da453c" }}>No data available</p> :
                         filteredData && filteredData.map((data: any, index: number) => {
-                            return <section key={index} className='trans' > <div>{data.cate} <p>{data.desc}</p> </div><p>₹{data.amount}</p></section>
+                            return <section key={index} className='trans' > <div>{data.desc} <p>{data.cate}</p> </div><p>₹{data.amount}</p></section>
                         })}
             </div >
             <Modal opened={secondModalOpen} onClose={() => setSecondModalOpen(false)} title="Add Your Transaction">
