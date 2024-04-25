@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom"
-import { IconDashboard, IconCurrencyDollar, IconListDetails } from "@tabler/icons-react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChartPie, faDashboard, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
 
-const Sidebar = () => {
+
+interface prop {
+    isToggle: string | null;
+}
+
+const Sidebar = ({ isToggle }: prop) => {
     return (
-        <div className="nav">
-            {/* <div className="menu">Menu</div> */}
-            <ul>
-                <li><Link to="/dashboard"><IconDashboard size={'1.5em'} />Dashboard</Link></li>
-                <li><Link to="" style={{ paddingRight: '60px' }}><IconCurrencyDollar size={'1.5em'} />Budget</Link></li>
-                <li><Link to=""><IconListDetails size={'1.5em'} />Categories</Link></li>
-            </ul>
+        <div className={`sidebar ${isToggle}`}>
+            <li><FontAwesomeIcon icon={faChartPie} /><Link style={{ fontWeight: "300" }} to="/dashboard">Dashboard</Link></li>
+            <li><FontAwesomeIcon icon={faDashboard} /><Link style={{ fontWeight: "300" }} to="">Budget</Link></li>
+            <li><FontAwesomeIcon icon={faLayerGroup} /><Link style={{ fontWeight: "300" }} to="">Categories</Link></li>
         </div>
     )
 }

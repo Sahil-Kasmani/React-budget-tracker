@@ -28,10 +28,12 @@ const Login: React.FC = () => {
     }
 
     return (
-        <div className="main_login">
+        <div className="container">
+            <div className="con1">
+                <img src="/images/web.jpg" alt="web_image" />
+            </div>
 
-            <div className="login">
-
+            <div className="log">
                 <fieldset>
                     <h1>Login Form</h1>
                     <form id="login" autoComplete="off" noValidate onSubmit={(e) => { handleSubmit(e) }}>

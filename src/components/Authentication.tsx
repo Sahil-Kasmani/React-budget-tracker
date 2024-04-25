@@ -88,7 +88,7 @@ const Authentication: React.FC = () => {
                 <img src="/images/web.jpg" alt="web_image" />
             </div>
 
-            <div className="con2">
+            <div className="auth">
 
                 <fieldset>
                     <h1>Sign up</h1>

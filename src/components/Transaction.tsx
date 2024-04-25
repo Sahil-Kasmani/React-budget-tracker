@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ActionIcon, Button, Modal } from '@mantine/core';
 import { IconFilterEdit, IconCategoryPlus } from '@tabler/icons-react';
 import { DatePicker } from 'antd';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 interface FormValues {
@@ -123,8 +124,7 @@ const Transaction = ({ user_deta }: data_prop) => {
             <div>
                 <div className='flex'>
                     <h2>Transactions</h2>
-                    {/* <ActionIcon variant='outline' color='black' onClick={handleFilterOpen}><IconFilterEdit /></ActionIcon> */}
-                    <p className='explore' onClick={handleFilterOpen}><small>Explore all</small></p>
+                    <Link to="" style={{ textDecoration: "none" }} className='explore' onClick={handleFilterOpen}><small>Explore all</small></Link>
 
                     <Modal
                         opened={firstModalOpen}
@@ -165,7 +165,12 @@ const Transaction = ({ user_deta }: data_prop) => {
                     (<p className='flex' style={{ color: "#da453c" }}>No data available In selected filter Range</p>) :
                     !filteredData ? <p className='flex' style={{ color: "#da453c" }}>No data available</p> :
                         filteredData && filteredData.map((data: any, index: number) => {
-                            return <section key={index} className='trans' > <div>{data.desc} <p>{data.cate}</p> </div><p>₹{data.amount}</p></section>
+                            return <section key={index} className='trans' >
+                                <div style={{ display: "flex", alignItems: "center" }}>
+                                    <img className='cate-icon' src={data.cate === "credit" ? "/images/profit.jpg" : "/images/loss.jpg"} width='33px' height="33px" style={{ borderRadius: "50%", margin: "0px 10px 0px 5px" }}></img>
+                                    <div><p style={{ fontWeight: "600" }}>{data.desc}</p> <p style={{ fontWeight: "300" }}>{data.cate}</p> </div>
+                                </div>
+                                <p style={{ fontWeight: "600" }}>₹{data.amount}</p></section>
                         })}
             </div >
             <Modal opened={secondModalOpen} onClose={() => setSecondModalOpen(false)} title="Add Your Transaction">
