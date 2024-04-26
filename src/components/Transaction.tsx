@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ActionIcon, Button, Modal } from '@mantine/core';
-import { IconFilterEdit, IconCategoryPlus } from '@tabler/icons-react';
+import { Button, Modal } from '@mantine/core';
+import { IconCategoryPlus } from '@tabler/icons-react';
 import { DatePicker } from 'antd';
 import { Link } from 'react-router-dom';
 import moment from 'moment';

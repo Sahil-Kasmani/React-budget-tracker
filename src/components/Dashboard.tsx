@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-import Sidebar from './Sidebar';
 import { Button, Menu } from '@mantine/core';
 import { IconLogout, IconUser, IconChevronDown } from '@tabler/icons-react';
-import Transaction from './Transaction';
 import { Avatar } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCircleUp } from '@fortawesome/free-solid-svg-icons'
+import { Sidebar, Transaction } from '../index';
 
 
 const Dashboard: React.FC = () => {

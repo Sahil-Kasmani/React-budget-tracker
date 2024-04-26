@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import '@mantine/core/styles.css';
 import { createTheme, MantineProvider } from '@mantine/core';
+import Authentication from './components/Authentication';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import Sidebar from './components/Sidebar';
+import Transaction from './components/Transaction';
 
 
 const theme = createTheme({
@@ -19,3 +24,7 @@ root.render(
     </React.StrictMode>
   </MantineProvider>
 );
+
+export {
+  Authentication, Login, Dashboard, Sidebar, Transaction
+}
