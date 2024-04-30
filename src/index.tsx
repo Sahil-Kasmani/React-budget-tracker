@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Sidebar from './components/Sidebar';
 import Transaction from './components/Transaction';
+import ProtectedRoute from './ProtectedRoute';
 
 
 const theme = createTheme({
@@ -26,5 +27,5 @@ root.render(
 );
 
 export {
-  Authentication, Login, Dashboard, Sidebar, Transaction
+  Authentication, Login, Dashboard, Sidebar, Transaction, ProtectedRoute
 }

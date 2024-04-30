@@ -39,60 +39,53 @@ const Dashboard: React.FC = () => {
 
     return (
         <>
-            {
-                localStorage.getItem("login") ? (
-                    <div className="interface">
-                        <Sidebar isToggle={toggleActive} />
+            <div className="interface">
+                <Sidebar isToggle={toggleActive} />
 
-                        <div className='content'>
-                            <div className="navbar">
-                                <div className='menu'>
-                                    <FontAwesomeIcon id='menu-icon' onClick={handleToggle} icon={faBars} />
-                                    <h3>Overview</h3>
-                                </div>
-                                <Menu shadow='md' width={100}>
-                                    <div>
-                                        <Avatar style={{ padding: "1em", cursor: 'pointer' }}>
-                                            <IconUser size="1.5rem" />
-                                        </Avatar>  <Menu.Target>
-                                            <Button variant='outline' color='black' style={{ margin: "0px 0.7rem" }}>User <IconChevronDown /></Button>
-                                        </Menu.Target>
-                                    </div>
-                                    <Menu.Dropdown>
-                                        <Menu.Item leftSection={<IconLogout size={14} />} onClick={handleLogout} color='red'>
-                                            Logout
-                                        </Menu.Item>
-                                    </Menu.Dropdown>
-                                </Menu>
+                <div className='content'>
+                    <div className="navbar">
+                        <div className='menu'>
+                            <FontAwesomeIcon id='menu-icon' onClick={handleToggle} icon={faBars} />
+                            <h3>Overview</h3>
+                        </div>
+                        <Menu shadow='md' width={100}>
+                            <div>
+                                <Avatar style={{ padding: "1em", cursor: 'pointer' }}>
+                                    <IconUser size="1.5rem" />
+                                </Avatar>  <Menu.Target>
+                                    <Button variant='outline' color='black' style={{ margin: "0px 0.7rem" }}>User <IconChevronDown /></Button>
+                                </Menu.Target>
+                            </div>
+                            <Menu.Dropdown>
+                                <Menu.Item leftSection={<IconLogout size={14} />} onClick={handleLogout} color='red'>
+                                    Logout
+                                </Menu.Item>
+                            </Menu.Dropdown>
+                        </Menu>
+                    </div>
+
+                    <div className='mainDetails'>
+                        <div id='budDetail'>
+                            <div className="b1">
+                                <div>Total Balance<h1>{totalCredit > totalDebit ? "+ " : "- "}₹.{totalCredit - totalDebit + ".00"}</h1></div>
+                                <p><FontAwesomeIcon icon={faCircleUp} /> grow</p>
+
                             </div>
 
-                            <div className='mainDetails'>
-                                <div id='budDetail'>
-                                    <div className="b1">
-                                        <div>Total Balance<h1>{totalCredit > totalDebit ? "+ " : "- "}₹.{totalCredit - totalDebit + ".00"}</h1></div>
-                                        <p><FontAwesomeIcon icon={faCircleUp} /> grow</p>
-
-                                    </div>
-
-                                    <div className='b2'>
-                                        <div>Total Income<h1>₹.{totalCredit + ".00"}</h1></div>
-                                    </div>
-                                    <div className='b2'>
-                                        <div>Total Expenses<h1>₹.{totalDebit + ".00"}</h1></div>
-                                    </div>
-                                </div>
-                                <div className="transDetail">
-                                    <Transaction user_deta={user_deta} />
-                                </div>
+                            <div className='b2'>
+                                <div>Total Income<h1>₹.{totalCredit + ".00"}</h1></div>
+                            </div>
+                            <div className='b2'>
+                                <div>Total Expenses<h1>₹.{totalDebit + ".00"}</h1></div>
                             </div>
                         </div>
-
+                        <div className="transDetail">
+                            <Transaction user_deta={user_deta} />
+                        </div>
                     </div>
-                ) :
-                    <>
-                        <h2 style={{ textAlign: "center", margin: "50px" }}>User is not logged in :- <Link to="/login">Login</Link></h2>
-                    </>
-            }
+                </div>
+
+            </div>
         </>
     )
 }

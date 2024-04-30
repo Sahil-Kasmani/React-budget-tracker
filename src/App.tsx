@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Authentication, Login, Dashboard } from './index';
+import { Authentication, Login, Dashboard, ProtectedRoute } from './index';
 
 function App() {
   return (
@@ -10,7 +10,9 @@ function App() {
           <Route path='/' element={<Authentication />}>
           </Route>
           <Route path='/Login' element={<Login />}></Route>
-          <Route path='/Dashboard' element={<Dashboard />}></Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path='/Dashboard' element={<Dashboard />}></Route>
+          </Route>
         </Routes>
       </div>
     </Router>
