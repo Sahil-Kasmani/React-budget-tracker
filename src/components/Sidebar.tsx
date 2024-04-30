@@ -8,11 +8,20 @@ interface prop {
 }
 
 const Sidebar = ({ isToggle }: prop) => {
+    const details = [
+        { icon: faChartPie, link: "/dashboard", text: "Dashboard" },
+        { icon: faDashboard, link: "", text: "Budget" },
+        { icon: faLayerGroup, link: "", text: "Categories" }]
+
+
     return (
         <div className={`sidebar ${isToggle}`}>
-            <li><FontAwesomeIcon icon={faChartPie} /><Link style={{ fontWeight: "300" }} to="/dashboard">Dashboard</Link></li>
-            <li><FontAwesomeIcon icon={faDashboard} /><Link style={{ fontWeight: "300" }} to="">Budget</Link></li>
-            <li><FontAwesomeIcon icon={faLayerGroup} /><Link style={{ fontWeight: "300" }} to="">Categories</Link></li>
+            {details.map((item, index) => (
+                <li key={index}>
+                    <FontAwesomeIcon icon={item.icon} />
+                    <Link style={{ fontWeight: "300" }} to={item.link}>{item.text}</Link>
+                </li>
+            ))}
         </div>
     )
 }
