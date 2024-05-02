@@ -13,14 +13,14 @@ const Login: React.FC = () => {
         const user = loggedUser ? JSON.parse(loggedUser) : null;
 
         {
-            user.email === email && user.pass === pass ?
+            (user && user.email === email && user.pass === pass) ?
                 <>
                     {navigate("/dashboard")}
                     {localStorage.setItem("login", "True")}
                 </>
                 : !email || !pass
                     ? alert("Please fill up the fields")
-                    : !user.email && !user.pass
+                    : !user
                         ? alert("Currently No user Exist")
                         : alert("Email or Password are invalid");
         }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal } from '@mantine/core';
 import { IconCategoryPlus } from '@tabler/icons-react';
 import { DatePicker } from 'antd';
@@ -19,9 +19,11 @@ interface filterValues {
 
 interface data_prop {
     user_deta: any;
+    totalCredit: any;
+    totalDebit: any;
 }
 
-const Transaction = ({ user_deta }: data_prop) => {
+const Transaction = ({ user_deta, totalCredit, totalDebit }: data_prop) => {
     const [tranValue, setTranValue] = useState<FormValues>({
         cate: "",
         amount: "",
@@ -37,7 +39,7 @@ const Transaction = ({ user_deta }: data_prop) => {
     const [firstModalOpen, setFirstModalOpen] = useState(false);
     const [secondModalOpen, setSecondModalOpen] = useState(false);
 
-    const [filteredData, setFilteredData] = useState(user_deta);
+    const [filteredData, setFilteredData] = useState<any[]>(user_deta);
 
     const { RangePicker } = DatePicker;
     const [dateRange, setDateRange] = useState<string[]>([]);
@@ -109,9 +111,21 @@ const Transaction = ({ user_deta }: data_prop) => {
 
         setSecondModalOpen(false);
 
-        const updatedUserDeta = [...user_deta, detail];
+        const updatedUserDeta = [...details];
         setFilteredData(updatedUserDeta);
 
+        console.log(totalCredit)
+        console.log(totalDebit)
+    }
+
+    const handleTransactionOpen = () => {
+        setTranValue({
+            cate: "",
+            amount: "",
+            date: "",
+            desc: ""
+        })
+        setSecondModalOpen(true);
     }
 
     const tranChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -161,9 +175,10 @@ const Transaction = ({ user_deta }: data_prop) => {
                         </fieldset>
                     </Modal>
                 </div>
-                {filteredData && filteredData.length === 0 ?
-                    (<p className='flex' style={{ color: "#da453c" }}>No data available In selected filter Range</p>) :
-                    !filteredData ? <p className='flex' style={{ color: "#da453c" }}>No data available</p> :
+                {filteredData.length === 0 && user_deta.length === 0 ?
+                    (<p className='flex' style={{ color: "#da453c" }}>No data available</p>) :
+                    filteredData.length === 0 && user_deta.length > 0 ?
+                        (<p className='flex' style={{ color: "#da453c" }}>No data available In selected filter Range</p>) :
                         filteredData && filteredData.map((data: any, index: number) => {
                             return <section key={index} className='trans' >
                                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -197,7 +212,7 @@ const Transaction = ({ user_deta }: data_prop) => {
                 </fieldset>
             </Modal>
             <div style={{ textAlign: "end" }}>
-                <Button variant='outline' leftSection={<IconCategoryPlus size={14} />} style={{ margin: "10px 1.3rem" }} onClick={() => setSecondModalOpen(true)}>Add New</Button>
+                <Button variant='outline' leftSection={<IconCategoryPlus size={14} />} style={{ margin: "10px 1.3rem" }} onClick={() => handleTransactionOpen()}>Add New</Button>
             </div>
         </div >
     )

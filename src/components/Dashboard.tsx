@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { Button, Menu } from '@mantine/core';
 import { IconLogout, IconUser, IconChevronDown } from '@tabler/icons-react';
@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
 
     // user details 
     let exist = localStorage.getItem(userName.name);
-    let user_deta = exist ? JSON.parse(exist) : null;
+    let user_deta = exist ? JSON.parse(exist) : [];
 
     // logic for the credit and debit b1 
     const totalCredit = user_deta.filter((item: any) => item.cate === "credit").reduce((prev: number, value: any) => prev + parseFloat(value.amount), 0)
@@ -80,7 +80,7 @@ const Dashboard: React.FC = () => {
                             </div>
                         </div>
                         <div className="transDetail">
-                            <Transaction user_deta={user_deta} />
+                            <Transaction user_deta={user_deta} totalCredit={totalCredit} totalDebit={totalDebit} />
                         </div>
                     </div>
                 </div>
