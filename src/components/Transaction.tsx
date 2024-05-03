@@ -135,6 +135,7 @@ const Transaction = ({ user_deta, totalCredit, totalDebit }: data_prop) => {
 
     return (
         <div style={{ width: '100%' }}>
+
             <div>
                 <div className='flex'>
                     <h2>Transactions</h2>
@@ -175,6 +176,11 @@ const Transaction = ({ user_deta, totalCredit, totalDebit }: data_prop) => {
                         </fieldset>
                     </Modal>
                 </div>
+                <div>
+                    <div>
+                        <Button variant='light' leftSection={<IconCategoryPlus size={14} />} style={{ margin: "4px 1.3rem", width: "calc(99% - 40px)", borderRadius: "10px" }} onClick={() => handleTransactionOpen()}>Add</Button>
+                    </div>
+                </div>
                 {filteredData.length === 0 && user_deta.length === 0 ?
                     (<p className='flex' style={{ color: "#da453c" }}>No data available</p>) :
                     filteredData.length === 0 && user_deta.length > 0 ?
@@ -211,9 +217,6 @@ const Transaction = ({ user_deta, totalCredit, totalDebit }: data_prop) => {
                     </form>
                 </fieldset>
             </Modal>
-            <div style={{ textAlign: "end" }}>
-                <Button variant='outline' leftSection={<IconCategoryPlus size={14} />} style={{ margin: "10px 1.3rem" }} onClick={() => handleTransactionOpen()}>Add New</Button>
-            </div>
         </div >
     )
 }
